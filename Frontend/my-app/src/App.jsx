@@ -7,6 +7,10 @@ import About from './pages/About.jsx';
 import MasterLayout from './components/Layouts/MasterLayout.jsx';
 import NotFound from './pages/NotFound.jsx';
 import ProductDetail from './pages/ProductDetail.jsx';
+import ListUser from './pages/users/ListUser.jsx';
+import UserDetail from './pages/users/UserDetail.jsx';
+import Login from './pages/Login.jsx';
+import Profile from './pages/Profile.jsx';
 
 // const router = createBrowserRouter([
 //   {
@@ -30,6 +34,10 @@ function App() {
               <Route path="/" element={<Home />}></Route>
               <Route path="/about" element={<About />}></Route>
               <Route path="/products/:productId" element={<ProductDetail />}></Route>
+              <Route path="/users" element={<ListUser />}></Route>
+              <Route path="/users/:id" element={<UserDetail />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/profile" element={<Profile />}></Route>
               <Route path="*" element={<NotFound />}></Route>
             </Route>
 

@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 function Home() {
+  const user = useSelector(state => state.user);
   return (
-    <div>This is home page!</div>
+    <div>
+       Welcome,  {user.username}
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ function MasterLayout() {
             <nav style={{display: 'flex', justifyContent: 'end', gap: '10px'}}>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
+                <NavLink to="/users">List Users</NavLink>
             </nav>
             <main>
                 <Outlet />
