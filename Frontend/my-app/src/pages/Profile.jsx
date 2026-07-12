@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../store/userSlice';
+import { useEffect } from 'react';
 
 export default function Profile() {
   const user = useSelector(state => state.user);
+  const counter = useSelector(state => state.counter);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -11,6 +13,11 @@ export default function Profile() {
     dispatch(logout());
     navigate('/login');
   };
+
+  useEffect(() => {
+    console.log(user);
+    console.log(counter);
+  }, []);
 
   return (
     <div className="card">

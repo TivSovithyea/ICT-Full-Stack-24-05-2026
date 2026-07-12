@@ -7,6 +7,7 @@ function MasterLayout() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/users">List Users</NavLink>
+                <NavLink to="/counter">Counter</NavLink>
             </nav>
             <main>
                 <Outlet />

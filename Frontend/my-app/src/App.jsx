@@ -11,6 +11,7 @@ import ListUser from './pages/users/ListUser.jsx';
 import UserDetail from './pages/users/UserDetail.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
+import Counter from './pages/Counter.jsx';
 
 // const router = createBrowserRouter([
 //   {
@@ -25,7 +26,7 @@ import Profile from './pages/Profile.jsx';
 
 function App() {
   return (
-    <div>
+    <div className='app-container'>
         {/* <RouterProvider router={router} /> */}
         <BrowserRouter>
           <Routes>
@@ -38,6 +39,7 @@ function App() {
               <Route path="/users/:id" element={<UserDetail />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/profile" element={<Profile />}></Route>
+              <Route path="/counter" element={<Counter />}></Route>
               <Route path="*" element={<NotFound />}></Route>
             </Route>
 
