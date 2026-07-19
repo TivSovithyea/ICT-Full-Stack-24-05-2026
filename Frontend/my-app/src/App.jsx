@@ -12,7 +12,7 @@ import UserDetail from './pages/users/UserDetail.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
 import Counter from './pages/Counter.jsx';
-
+import AboutDetail from './pages/AboutDetail.jsx'
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -33,7 +33,9 @@ function App() {
 
             <Route element={<MasterLayout />}>
               <Route path="/" element={<Home />}></Route>
-              <Route path="/about" element={<About />}></Route>
+              <Route path="/about" element={<About />}>
+                <Route path='/detail' element={<AboutDetail />}></Route>
+              </Route>
               <Route path="/products/:productId" element={<ProductDetail />}></Route>
               <Route path="/users" element={<ListUser />}></Route>
               <Route path="/users/:id" element={<UserDetail />}></Route>
