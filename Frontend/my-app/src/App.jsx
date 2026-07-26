@@ -34,8 +34,9 @@ function App() {
             <Route element={<MasterLayout />}>
               <Route path="/" element={<Home />}></Route>
               <Route path="/about" element={<About />}>
-                <Route path='/detail' element={<AboutDetail />}></Route>
               </Route>
+                <Route path='/detail' element={<AboutDetail />}></Route>
+
               <Route path="/products/:productId" element={<ProductDetail />}></Route>
               <Route path="/users" element={<ListUser />}></Route>
               <Route path="/users/:id" element={<UserDetail />}></Route>

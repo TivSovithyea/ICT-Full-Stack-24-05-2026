@@ -1,70 +1,26 @@
-import React, { useState } from 'react'
-import { AnimatePresence, motion } from "framer-motion";
-import { Button } from './components/ui/button';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import AdminLayout from './components/layouts/AdminLayout';
+import Product from './pages/Product';
+import Profile from './pages/Profile';
 
 function App() {
-
-  const [isOpen, setIsOpen] = useState(true);
-
-  const boxVariants = {
-    hidden: {opacity: 0, y: -50},
-    visible: {opacity: 1, y: 0}
-  };
-
   return (
     <div>
+      <BrowserRouter>
+        <Routes>
 
-      {/* Fades transition */}
+          <Route element={<AdminLayout />}>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/products' element={<Product></Product>}></Route>
+            <Route path='/profile' element={<Profile></Profile>}></Route>
+          </Route>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        Hello, Framer Motion!
-      </motion.div>
-
-      {/* Variants Resualble State */}
-
-      <motion.div
-        variants={boxVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        Hello, welcome to ICT.
-      </motion.div>
-
-      {/* Gusture */}
-
-      <motion.button
-        className='bg-cyan-300 rounded-2xl'
-        whileHover={{scale: 1.2}}
-        whileTap={{scale: 0.9}}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        Hover & Click me
-      </motion.button>
-
-      <AnimatePresence>
-        {
-          isOpen && (
-            <motion.div
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              exit={{opacity: 0 }}
-            >
-              Hello From Modal
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
-
-      <div className='text-2xl text-blue-500'>
-        Hello Tailwinds
-      </div>
-      <Button>Click Me</Button>
-      <Button className="bg-red-500 hover:bg-red-700 text-white">Delete</Button>
-
+          <Route path='/login' element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
