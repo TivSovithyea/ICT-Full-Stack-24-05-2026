@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $categories = [
         //     [
@@ -20,7 +20,12 @@ class CategoryController extends Controller
         //     ]
         // ];
 
-        $categories = Category::all();
+        $categories = Category::withCount('products')
+            // ->with(['products'  => function ($query) {
+            //     $query->select('category_id', 'name');
+            // }])
+            ->with('products')
+            ->paginate($request->per_page ?? 15);
 
         return response()->json([
             'data' => $categories
@@ -35,10 +40,7 @@ class CategoryController extends Controller
             'name' => 'required | string | max:191'
         ]);
 
-        $category = Category::create([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
+        $category = Category::create($request->all());
 
         if($category) {
             return response()->json([
