@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -23,7 +24,7 @@ class ProductController extends Controller
         }
 
         return response()->json([
-            'data' => $products->latest()->paginate($request->per_page ?? 2)
+            'data' => $products->latest()->paginate($request->per_page ?? 15)
         ]);
     }
 
@@ -34,7 +35,8 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'string|nullable',
             'price' => 'required|numeric|min:0',
-            'stock' => 'nullable|integer|min:0'
+            'stock' => 'nullable|integer|min:0',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
         // Object Instance
@@ -45,6 +47,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
+        $product->image = $request->file('image')?->store('products', 'public');
 
         if($product->save()) {
             return response()->json([
@@ -73,7 +76,8 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'string|nullable',
             'price' => 'required|numeric|min:0',
-            'stock' => 'nullable|integer|min:0'
+            'stock' => 'nullable|integer|min:0',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
         $product = Product::findOrFail($request->product);
@@ -83,6 +87,12 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
+        if($request->hasFile('image')) {
+            if($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $product->image = $request->file('image')->store('products', 'public');
+        }
 
         if($product->save()) {
             return response()->json([
@@ -98,7 +108,9 @@ class ProductController extends Controller
 
     public function destroy(Request $request) {
         $product = Product::findOrFail($request->product);
-
+        if($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
         if($product->delete()) {
             return response()->json([
                 'message' => 'Success delete product'
