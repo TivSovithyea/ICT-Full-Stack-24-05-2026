@@ -25,6 +25,7 @@ class CategoryController extends Controller
             //     $query->select('category_id', 'name');
             // }])
             ->with('products')
+            ->latest()
             ->paginate($request->per_page ?? 15);
 
         return response()->json([

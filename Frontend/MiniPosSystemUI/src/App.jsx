@@ -5,7 +5,9 @@ import Login from './pages/Login';
 import AdminLayout from './components/layouts/AdminLayout';
 import Product from './pages/Product';
 import Profile from './pages/Profile';
-import Category from './pages/Category';
+import CategoryList from './pages/category/CategoryList';
+import CategoryCreate from './pages/category/CategoryCreate';
+import CategoryEdit from './pages/category/CategoryEdit';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route path='/' element={<Home />}></Route>
             <Route path='/products' element={<Product></Product>}></Route>
-            <Route path="/categories" element={<Category></Category>}></Route>
+            <Route path="/categories" element={<CategoryList></CategoryList>}></Route>
+            <Route path="/categories/create" element={<CategoryCreate></CategoryCreate>}></Route>
+            <Route path="/categories/edit/:id" element={<CategoryEdit></CategoryEdit>}></Route>
             <Route path='/profile' element={<Profile></Profile>}></Route>
           </Route>
 

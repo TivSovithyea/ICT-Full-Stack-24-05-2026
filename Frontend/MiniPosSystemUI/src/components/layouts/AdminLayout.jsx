@@ -3,6 +3,8 @@ import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
 import { Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Toaster } from "@/components/ui/toast"
+
 
 export default function AdminLayout() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -43,6 +45,7 @@ export default function AdminLayout() {
             </AnimatePresence>
           </div>
         </main>
+         <Toaster />
       </div>
     </div>
   );
