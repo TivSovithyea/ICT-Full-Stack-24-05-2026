@@ -28,7 +28,7 @@ function CategoryCreate() {
         event.preventDefault();
         try {
             setLoading(true);
-            
+
             const response = await api.post('categories', form);
 
             const id = toast.add({

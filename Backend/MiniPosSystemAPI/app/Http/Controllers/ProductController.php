@@ -33,6 +33,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'string|required|max:191',
             'category_id' => 'required|exists:categories,id',
+            'brand_id' => 'required|exists:brands,id',
             'description' => 'string|nullable',
             'price' => 'required|numeric|min:0',
             'stock' => 'nullable|integer|min:0',
@@ -44,6 +45,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
@@ -74,6 +76,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'string|required|max:191',
             'category_id' => 'required|exists:categories,id',
+            'brand_id' => 'required|exists:brands,id',
             'description' => 'string|nullable',
             'price' => 'required|numeric|min:0',
             'stock' => 'nullable|integer|min:0',
@@ -84,6 +87,7 @@ class ProductController extends Controller
 
         $product->name = $request->name;
         $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;

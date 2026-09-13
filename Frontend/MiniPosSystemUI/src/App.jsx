@@ -8,6 +8,8 @@ import Profile from './pages/Profile';
 import CategoryList from './pages/category/CategoryList';
 import CategoryCreate from './pages/category/CategoryCreate';
 import CategoryEdit from './pages/category/CategoryEdit';
+import ProductList from './pages/product/ProductList';
+import ProductForm from './pages/product/ProductForm';
 
 function App() {
   return (
@@ -17,10 +19,12 @@ function App() {
 
           <Route element={<AdminLayout />}>
             <Route path='/' element={<Home />}></Route>
-            <Route path='/products' element={<Product></Product>}></Route>
+            {/* <Route path='/products' element={<Product></Product>}></Route> */}
             <Route path="/categories" element={<CategoryList></CategoryList>}></Route>
             <Route path="/categories/create" element={<CategoryCreate></CategoryCreate>}></Route>
             <Route path="/categories/edit/:id" element={<CategoryEdit></CategoryEdit>}></Route>
+            <Route path="/products" element={<ProductList></ProductList>}></Route>
+            <Route path="/products/form/:id?" element={<ProductForm></ProductForm>}></Route>
             <Route path='/profile' element={<Profile></Profile>}></Route>
           </Route>
 
