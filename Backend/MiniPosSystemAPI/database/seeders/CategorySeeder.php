@@ -12,10 +12,11 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 500; $i++) {
-            Category::create([
-                'name' => ucfirst(fake()->unique()->words(3, true)),
-                'description' => fake()->optional()->sentence(),
+        foreach (TwPcStoreCatalog::CATEGORIES as $name => $description) {
+            Category::firstOrCreate(['name' => $name], [
+                'description' => $description,
+                'created_at' => TwPcStoreCatalog::stockedAt(),
+                'updated_at' => TwPcStoreCatalog::stockedAt(),
             ]);
         }
     }

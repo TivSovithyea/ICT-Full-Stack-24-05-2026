@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Brand;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
@@ -12,6 +12,12 @@ class BrandSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        foreach (TwPcStoreCatalog::BRANDS as $name => $description) {
+            Brand::firstOrCreate(['name' => $name], [
+                'description' => $description,
+                'created_at' => TwPcStoreCatalog::stockedAt(),
+                'updated_at' => TwPcStoreCatalog::stockedAt(),
+            ]);
+        }
     }
 }

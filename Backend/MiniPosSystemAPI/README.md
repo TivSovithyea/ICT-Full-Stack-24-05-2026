@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## TW PC STORE demo data
+
+See [the seeding guide](docs/TW_PC_STORE_SEEDING.md) for Khmer shop data, setup commands, demo staff, and test instructions. The dataset includes 12 categories, 19 brands, 42 products, 60 orders, and 165 order items.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
